@@ -9,52 +9,62 @@
 Added comprehensive `body.theme-day` overrides for all content sections:
 
 #### Main Content
+
 - ✅ All `h1`, `h2`, `h3`, `h4` headings use `--heading-color-day` (#0a7ea4)
 - ✅ Main paragraphs and text use `--text-color` (#08323a)
 - ✅ Links styled appropriately for day mode
 
 #### Hero Section
+
 - ✅ Soft blue gradient background for day mode
 - ✅ Dark blue headings
 - ✅ Readable text color
 
 #### Featured APOD Widget
+
 - ✅ Subtle blue-tinted background in day mode
 - ✅ Cyan-tinted text with proper contrast
 - ✅ Themed border color
 
 #### Featured Tutorials Section
+
 - ✅ Blue-tinted card backgrounds
 - ✅ Proper hover states with brighter blue
 - ✅ Day-mode styling for all tutorial items
 
 #### Top Picks List
+
 - ✅ Light blue card background (#0a7ea4 with opacity)
 - ✅ Themed hover states
 - ✅ Proper text color for descriptions
 
 #### Card Grid (Navigation Page)
+
 - ✅ Front cards: subtle blue-tinted background
 - ✅ Back cards: cyan glow effect in day mode
 - ✅ Hover: brighter blue with enhanced shadow
 - ✅ Smooth transitions between states
 
 #### History Capsules
+
 - ✅ Light blue tinted backgrounds
 - ✅ Proper text colors for captions
 - ✅ Responsive styling on all screen sizes
 
 #### Roadmap Section
+
 - ✅ Strong headings use day-mode colors
 - ✅ List items readable with proper contrast
 - ✅ Emphasis text styled consistently
 
 #### CTA (Call-to-Action) Section
+
 - ✅ Light background with blue tint
 - ✅ Readable text color
 - ✅ Consistent with page theme
 
 #### Contact Form (Already Styled)
+
 - ✅ White backgrounds for inputs in day mode
 - ✅ Blue accent button
 - ✅ High contrast labels
@@ -64,6 +74,7 @@ Added comprehensive `body.theme-day` overrides for all content sections:
 ## Color Scheme
 
 ### Night Mode (Default)
+
 ```
 Background:     #0b0c10 (deep space)
 Text:           #c5c6c7 (light gray)
@@ -74,6 +85,7 @@ Cards:          rgba(255, 255, 255, 0.02) (transparent white)
 ```
 
 ### Day Mode
+
 ```
 Background:     #f2f7fb (soft blue)
 Text:           #08323a (dark navy)
@@ -117,13 +129,17 @@ All pages now fully support day/night theme toggling:
 Every element now respects the `body.theme-day` and `body.theme-night` classes:
 
 **Night Mode** (applied automatically as default):
+
 ```css
-body.theme-night { --nav-link-color: #9be7e0; /* ... */ }
+body.theme-night {
+  --nav-link-color: #9be7e0; /* ... */
+}
 ```
 
 **Day Mode** (applied when user toggles):
+
 ```css
-body.theme-day { 
+body.theme-day {
   --bg-color: #f2f7fb;
   --text-color: #08323a;
   --heading-color-day: #0a7ea4;
@@ -136,6 +152,7 @@ body.theme-day {
 ## JavaScript Integration
 
 The `script.js` handles:
+
 1. ✅ Reading saved theme from `localStorage` on page load
 2. ✅ Detecting system preference if no saved theme
 3. ✅ Applying correct CSS classes to `document.body`
@@ -147,6 +164,7 @@ The `script.js` handles:
 ## Responsive Design
 
 All themed sections respect media queries:
+
 - ✅ Desktop (≥1200px) — Full layout with all colors
 - ✅ Tablet (768-1199px) — Adjusted spacing, colors maintained
 - ✅ Mobile (≤767px) — Single column, optimized colors
@@ -181,7 +199,7 @@ All themed sections respect media queries:
 ✅ **Smooth transitions between themes**  
 ✅ **Persistent user preference**  
 ✅ **Accessible color contrasts**  
-✅ **Mobile-friendly in both modes**  
+✅ **Mobile-friendly in both modes**
 
 ---
 
