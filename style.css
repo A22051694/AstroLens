@@ -1,36 +1,418 @@
 /* External stylesheet for AstroLens
-	 Combined styles moved from inline <style> blocks in HTML files
+   Combined styles moved from inline <style> blocks in HTML files
 */
+
+/* Theme variables */
+:root {
+  --bg-color: #0b0c10;
+  --text-color: #c5c6c7;
+  --accent: #66fcf1;
+  --tile-color: #9be7e0;
+  --muted: #a8b4be;
+  --card-bg: rgba(255, 255, 255, 0.02);
+  /* theme variants */
+  --accent-night: #50c4bc;
+  --accent-day: #0a7ea4;
+  --heading-color-night: #66fcf1;
+  --heading-color-day: #0a7ea4;
+  --muted-night: #a8b4be;
+  --muted-day: #5a7c89;
+  --nav-link-color: #9be7e0;
+  --active-text-color: #041214;
+  --header-bg: linear-gradient(
+    180deg,
+    rgba(15, 23, 32, 0.92),
+    rgba(11, 12, 16, 0.88)
+  );
+  --header-border: 1px solid rgba(102, 252, 241, 0.08);
+}
+
 body {
-  background-color: #0b0c10;
-  color: #c5c6c7;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
 
+/* Night theme (default) - ensure consistent colors */
+body.theme-night {
+  --nav-link-color: #9be7e0;
+  --accent: var(--accent-night);
+  --active-text-color: #041214;
+  --bg-color: #0b0c10;
+  --text-color: #c5c6c7;
+  --header-bg: linear-gradient(
+    180deg,
+    rgba(15, 23, 32, 0.92),
+    rgba(11, 12, 16, 0.88)
+  );
+  --header-border: 1px solid rgba(102, 252, 241, 0.08);
+  background-color: #0b0c10;
+  color: #c5c6c7;
+}
+
+body.theme-night nav a {
+  color: var(--nav-link-color);
+}
+
+body.theme-night nav a:hover,
+body.theme-night nav a:focus {
+  color: #ffffff;
+}
+
+body.theme-night h1,
+body.theme-night h2,
+body.theme-night h3 {
+  color: var(--heading-color-night);
+}
+
+body.theme-night .muted {
+  color: var(--muted-night);
+}
+
+/* Day theme - bright and readable */
+body.theme-day {
+  --nav-link-color: #064048;
+  --accent: var(--accent-day);
+  --active-text-color: #062023;
+  --bg-color: #f2f7fb;
+  --text-color: #08323a;
+  --header-bg: linear-gradient(
+    180deg,
+    rgba(250, 253, 255, 0.98),
+    rgba(245, 250, 255, 0.95)
+  );
+  --header-border: 1px solid rgba(2, 8, 10, 0.08);
+  background-color: #f2f7fb;
+  color: #08323a;
+}
+
+body.theme-day nav a {
+  color: var(--nav-link-color);
+}
+
+body.theme-day nav a:hover,
+body.theme-day nav a:focus {
+  color: var(--accent-day);
+}
+
+body.theme-day h1,
+body.theme-day h2,
+body.theme-day h3 {
+  color: var(--heading-color-day);
+}
+
+body.theme-day p,
+body.theme-day li,
+body.theme-day label,
+body.theme-day span {
+  color: var(--text-color);
+}
+
+body.theme-day .muted {
+  color: var(--muted-day);
+}
+
 header,
-nav,
 footer {
-  background-color: #1f2833;
+  background: var(--header-bg);
+  border-bottom: var(--header-border);
   text-align: center;
   padding: 1rem;
 }
 
+/* Header / Nav styling (driven by variables so themes can override) */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(6px);
+}
+
+nav {
+  display: block;
+  background: var(--header-bg);
+  border-bottom: var(--header-border);
+}
+
+/* Nav inner container: center the links but allow actions at right */
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  background: var(
+    --header-bg
+  ); /* match header background so nav-inner blends with header */
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.nav-actions {
+  margin-left: auto; /* push actions to the extreme right */
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Style nav links as pills */
 nav a {
-  margin: 0 15px;
-  color: #66fcf1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  margin: 0 6px;
+  color: var(--nav-link-color);
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
+  border-radius: 999px;
+  transition: transform 0.14s ease, background 0.14s ease, color 0.14s ease,
+    box-shadow 0.14s ease;
+}
+
+nav a:hover,
+nav a:focus {
+  transform: translateY(-2px);
+  background: linear-gradient(
+    90deg,
+    rgba(102, 252, 241, 0.06),
+    rgba(102, 252, 241, 0.03)
+  );
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(2, 6, 12, 0.45);
+}
+
+/* Active/current page indicator (add class="active" server-side or via JS) */
+nav a.active {
+  background: linear-gradient(90deg, var(--accent), var(--tile-color));
+  color: var(--active-text-color);
+  box-shadow: 0 10px 30px rgba(102, 252, 241, 0.12);
+}
+
+/* small accessible focus ring */
+nav a:focus-visible {
+  outline: 3px solid rgba(102, 252, 241, 0.12);
+  outline-offset: 3px;
+}
+
+/* Theme toggle button (sun — knob — moon) */
+.theme-toggle {
+  --size: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  height: var(--size);
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  border: 1px solid rgba(155, 231, 224, 0.05);
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.12s ease, box-shadow 0.12s ease;
+}
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
+}
+
+.theme-toggle .track {
+  position: relative;
+  width: 68px;
+  height: 28px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.18),
+    rgba(255, 255, 255, 0.02)
+  );
+  border-radius: 999px;
+  display: inline-block;
+}
+.theme-toggle .knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffd66b; /* sun color when left */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: left 0.18s ease, background 0.18s ease, transform 0.18s ease;
+}
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+}
+
+/* Active night state — move knob to right and change color */
+body.theme-night .theme-toggle .knob {
+  left: 43px;
+  background: #cbd5ff; /* pale moon */
+  transform: translateY(-1px);
+}
+
+/* Light (day) theme additional overrides for pseudo-elements and transitions */
+body.theme-day {
+  transition: background-color 240ms ease, color 240ms ease;
+}
+
+body.theme-day::before {
+  /* softer daytime gradient instead of deep-space glow */
+  background: linear-gradient(180deg, #eef8ff 0%, #f6fbff 55%, #f2f7fb 100%);
+  mix-blend-mode: normal;
+  opacity: 1;
+  animation: none; /* static for day */
+}
+
+body.theme-day::after {
+  /* hide twinkling stars in day mode */
+  opacity: 0; /* remove foreground stars */
+  animation: none;
+}
+
+body.theme-day header {
+  /* header background is driven by --header-bg variable (set in body.theme-day)
+     avoid hard-coded gradients so the header and .nav-inner use the same variable */
+  border-bottom-color: rgba(2, 8, 10, 0.03);
+  color: #06343a;
+}
+
+/* nav links already use --nav-link-color variable (set above per theme) */
+
+/* buttons and accent in day mode */
+body.theme-day .btn {
+  background: #ffd66b;
+  color: #062023;
+}
+
+/* ensure toggle knob shows sun on day and sits left */
+body.theme-day .theme-toggle .knob {
+  left: 3px;
+  background: #ffd66b;
+}
+
+/* night theme variables already set in body.theme-night rule above */
+
+/* Animated starfield background (layered for depth) */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* distant slow-moving glow / gradient layer */
+body::before {
+  background: radial-gradient(
+      ellipse at 10% 20%,
+      rgba(102, 252, 241, 0.03) 0%,
+      transparent 25%
+    ),
+    radial-gradient(
+      ellipse at 80% 70%,
+      rgba(155, 231, 224, 0.02) 0%,
+      transparent 20%
+    ),
+    linear-gradient(180deg, rgba(1, 6, 8, 0.9), rgba(6, 10, 14, 0.97));
+  mix-blend-mode: screen;
+  opacity: 0.95;
+  transform-origin: center;
+  animation: moveStars 90s linear infinite;
+}
+
+/* foreground twinkling stars — many tiny dots using repeating radial gradients */
+body::after {
+  background-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.95) 1px,
+      rgba(255, 255, 255, 0.05) 1.5px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.85) 1px,
+      rgba(255, 255, 255, 0.02) 1.4px,
+      transparent 2px
+    ),
+    radial-gradient(circle, rgba(173, 216, 230, 0.75) 0.9px, transparent 1.6px);
+  background-position: 10% 20%, 70% 40%, 40% 80%;
+  background-repeat: repeat;
+  background-size: 600px 600px, 900px 900px, 480px 480px;
+  opacity: 0.24;
+  filter: drop-shadow(0 0 1px rgba(102, 252, 241, 0.06));
+  animation: twinkle 6s ease-in-out infinite;
+}
+
+@keyframes moveStars {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-1200px, 0, 0) scale(1.03);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.22;
+    transform: translateZ(0) scale(1);
+  }
+  50% {
+    opacity: 0.12;
+    transform: translateZ(0) scale(0.995);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after {
+    animation: none;
+  }
 }
 
 main {
   padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 h1,
-h2 {
-  color: #66fcf1;
+h2,
+h3,
+h4 {
+  color: var(--heading-color-night);
+}
+
+body.theme-day h1,
+body.theme-day h2,
+body.theme-day h3,
+body.theme-day h4 {
+  color: var(--heading-color-day);
+}
+
+/* Ensure main content text follows theme */
+body.theme-day main {
+  color: var(--text-color);
+}
+
+body.theme-day main p,
+body.theme-day main li,
+body.theme-day main a:not(.btn):not(.top-pick):not(.tutorial-link) {
+  color: var(--text-color);
 }
 
 /* Small accessibility & layout niceties */
@@ -38,6 +420,828 @@ ul {
   line-height: 1.6;
 }
 
+/* Smooth rendering and subtle page background animation */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes bgShift {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Container helpers */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
 footer p {
   margin: 0;
+}
+
+/* Contact form styles */
+#contact-form {
+  max-width: 700px;
+  margin: 1.5rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+#contact-form label {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+body.theme-day #contact-form label {
+  color: var(--text-color);
+}
+
+#contact-form input,
+#contact-form textarea {
+  background: #15181c;
+  border: 1px solid #28323a;
+  color: var(--text-color);
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+body.theme-day #contact-form input,
+body.theme-day #contact-form textarea {
+  background: #ffffff;
+  border: 1px solid #b3c5cd;
+  color: var(--text-color);
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+  outline: 2px solid #45a29e;
+  outline-offset: 2px;
+}
+
+#contact-form button {
+  background: #45a29e;
+  border: none;
+  color: #0b0c10;
+  padding: 0.6rem 0.9rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#contact-form button:hover {
+  background: #66fcf1;
+}
+
+body.theme-day #contact-form button {
+  background: var(--accent-day);
+  color: #ffffff;
+}
+
+body.theme-day #contact-form button:hover {
+  background: #0888c4;
+}
+
+/* Buttons */
+.btn {
+  background: #45a29e;
+  color: #081018;
+  border: none;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(69, 162, 158, 0.12);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(69, 162, 158, 0.16);
+}
+
+body.theme-day .btn {
+  background: var(--accent-day);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(10, 126, 164, 0.15);
+}
+
+body.theme-day .btn:hover {
+  box-shadow: 0 10px 30px rgba(10, 126, 164, 0.25);
+  background: #0888c4;
+}
+
+/* Card micro-interactions */
+.card {
+  position: relative;
+  overflow: hidden;
+}
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.015),
+    rgba(0, 0, 0, 0.06)
+  );
+  mix-blend-mode: overlay;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.card:hover::after {
+  opacity: 1;
+}
+
+/* subtle icon/emoji scale on hover for card headings */
+.card h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.card h3 span.icon {
+  display: inline-block;
+  transition: transform 0.18s ease;
+}
+.card:hover h3 span.icon {
+  transform: scale(1.12) rotate(-6deg);
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 1rem;
+  }
+  #contact-form {
+    padding: 0 0.5rem;
+  }
+}
+
+/* Tutorials list styles */
+.tutorial-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.tutorial-item {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  border: 1px solid rgba(102, 252, 241, 0.06);
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  transform: translateY(6px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.theme-day .tutorial-item {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 126, 164, 0.04),
+    rgba(10, 126, 164, 0.02)
+  );
+  border: 1px solid rgba(10, 126, 164, 0.1);
+}
+
+.tutorial-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(2, 6, 12, 0.6);
+}
+
+.tutorial-link {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.tutorial-item .hero-image {
+  width: 40%;
+  object-fit: cover;
+  display: block;
+}
+
+.tutorial-link img {
+  transition: transform 0.35s ease;
+}
+.tutorial-link:hover img {
+  transform: scale(1.03) rotate(-0.6deg);
+}
+
+.tutorial-body {
+  position: relative;
+}
+.tutorial-body::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    rgba(102, 252, 241, 0.18),
+    transparent 80%
+  );
+}
+
+.tutorial-body {
+  padding: 0.85rem;
+}
+
+.tutorial-body h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--heading-color-night);
+}
+
+body.theme-day .tutorial-body h3 {
+  color: var(--heading-color-day);
+}
+
+.tutorial-body .excerpt {
+  margin: 0;
+  color: var(--muted-night);
+}
+
+body.theme-day .tutorial-body .excerpt {
+  color: var(--muted-day);
+}
+
+/* hero image class for detail pages */
+.hero-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+  display: block;
+}
+
+/* Navigation card grid: 2x2 layout with rounded cards and hover reveal */
+.card-grid {
+  /* Fixed 2x2 layout: two columns per row on desktop */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(160px, auto);
+  gap: 1rem;
+  margin: 1.5rem 0;
+  /* stretch so each grid item fills row height and cards can be full-height */
+  align-items: stretch;
+}
+
+.card {
+  /* Card base + 3D flip support. Use HTML structure:
+   <div class="card">
+     <div class="card-inner">
+       <div class="card-front">...title/content...</div>
+       <div class="card-back">...description shown on flip...</div>
+     </div>
+   </div>
+*/
+  perspective: 1100px;
+  border-radius: 12px;
+  min-height: 140px;
+  /* ensure card occupies full grid cell height so .card-inner can fill */
+  height: 100%;
+  display: block;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.62s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.card:hover .card-inner,
+.card.card-flip-on-hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  /* center content both vertically and horizontally for full-height look */
+  align-items: center;
+  text-align: center;
+}
+
+.card-front {
+  z-index: 2;
+  transform: rotateY(0deg);
+  /* inherit existing card visuals */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  border: 1px solid rgba(102, 252, 241, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  color: var(--text-color);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  z-index: 1;
+  /* default back matches front in night mode */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  border: 1px solid rgba(102, 252, 241, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  color: var(--text-color);
+  /* keep back content centered as well by default */
+  align-items: center;
+}
+
+/* Heading + paragraph colors */
+.card h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--heading-color-night);
+}
+body.theme-day .card h3 {
+  color: var(--heading-color-day);
+}
+.card p {
+  margin: 0;
+  color: var(--text-color);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Day-mode flip highlight: translucent cyan on the back face + glow */
+body.theme-day .card-back {
+  background: rgba(0, 255, 238, 0.1); /* subtle fill */
+  border: 1px solid rgba(0, 255, 238, 0.14);
+  box-shadow: 0 12px 30px rgba(0, 255, 238, 0.08);
+}
+
+body.theme-day .card-front {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 126, 164, 0.05),
+    rgba(10, 126, 164, 0.02)
+  );
+  border: 1px solid rgba(10, 126, 164, 0.12);
+}
+
+body.theme-day .card:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 126, 164, 0.08),
+    rgba(10, 126, 164, 0.04)
+  );
+  box-shadow: 0 10px 30px rgba(10, 126, 164, 0.2);
+}
+
+/* When flipped (exposed back) make a brighter glow if mouse is over */
+.card:hover .card-back {
+  box-shadow: 0 18px 40px rgba(0, 255, 238, 0.14);
+}
+
+body.theme-day .card:hover .card-back {
+  box-shadow: 0 18px 40px rgba(10, 126, 164, 0.3);
+}
+
+/* Night mode: keep back face neutral (no bright cyan) */
+body.theme-night .card-back {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  border: 1px solid rgba(102, 252, 241, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .card-inner,
+  .card:hover .card-inner {
+    transition: none;
+    transform: none;
+  }
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(
+    180deg,
+    rgba(70, 162, 158, 0.04),
+    rgba(255, 255, 255, 0.01)
+  );
+}
+
+.card:hover p {
+  white-space: normal;
+  max-height: 6em; /* expand to show description */
+}
+
+/* small utility spacing */
+.spaced {
+  margin-top: 1rem;
+}
+
+/* Featured hero styles */
+.featured {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.01),
+    rgba(255, 255, 255, 0.005)
+  );
+  border: 1px solid rgba(102, 252, 241, 0.04);
+}
+
+body.theme-day .featured {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 126, 164, 0.04),
+    rgba(10, 126, 164, 0.02)
+  );
+  border: 1px solid rgba(10, 126, 164, 0.1);
+}
+.featured .featured-media img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+.featured h3 {
+  margin: 0 0 0.25rem 0;
+  color: #9be7e0;
+}
+
+body.theme-day .featured h3 {
+  color: var(--heading-color-day);
+}
+
+.featured .muted {
+  color: var(--muted-night);
+  margin: 0 0 0.6rem 0;
+}
+
+.featured p {
+  color: var(--text-color);
+}
+
+body.theme-day .featured .muted {
+  color: var(--muted-day);
+}
+
+body.theme-day .featured p {
+  color: var(--text-color);
+}
+
+/* APOD widget */
+.apod-card {
+  margin-top: 1rem;
+  padding: 0.8rem;
+  border-radius: 10px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.01),
+    rgba(255, 255, 255, 0.005)
+  );
+  border: 1px solid rgba(102, 252, 241, 0.04);
+}
+
+body.theme-day .apod-card {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 126, 164, 0.04),
+    rgba(10, 126, 164, 0.02)
+  );
+  border: 1px solid rgba(10, 126, 164, 0.1);
+}
+
+.apod-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.apod-card h3 {
+  margin: 0;
+  color: var(--heading-color-night);
+}
+
+.apod-card p {
+  color: var(--muted-night);
+}
+
+body.theme-day .apod-card h3 {
+  color: var(--heading-color-day);
+}
+
+body.theme-day .apod-card p {
+  color: var(--muted-day);
+}
+
+@media (max-width: 900px) {
+  .featured {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Top Picks styling */
+.top-picks {
+  margin: 2.4rem 0;
+}
+.top-picks-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+.top-picks-list li {
+  margin: 0;
+}
+.top-pick {
+  display: block;
+  padding: 0.9rem;
+  border-radius: 10px;
+  background: var(--card-bg);
+  text-decoration: none;
+  color: var(--text-color);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+body.theme-day .top-pick {
+  background: rgba(10, 126, 164, 0.05);
+  color: var(--text-color);
+  border: 1px solid rgba(10, 126, 164, 0.1);
+}
+.top-pick:hover,
+.top-pick:focus {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.01),
+    rgba(255, 255, 255, 0.02)
+  );
+}
+
+body.theme-day .top-pick:hover,
+body.theme-day .top-pick:focus {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 126, 164, 0.08),
+    rgba(10, 126, 164, 0.04)
+  );
+  box-shadow: 0 12px 28px rgba(10, 126, 164, 0.2);
+}
+.top-pick .tp-title {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: var(--heading-color-night);
+}
+body.theme-day .top-pick .tp-title {
+  color: var(--heading-color-day);
+}
+.top-pick .tp-desc {
+  display: block;
+  color: var(--muted-night);
+  font-size: 0.95rem;
+}
+
+body.theme-day .top-pick .tp-desc {
+  color: var(--muted-day);
+}
+
+/* History capsule grid */
+.history-capsules {
+  margin: 2.4rem 0;
+}
+.capsule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.capsule {
+  background: var(--card-bg);
+  padding: 0.75rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: stretch;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+.capsule img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+.capsule h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+.capsule p {
+  margin: 0;
+  color: var(--muted-night);
+  font-size: 0.95rem;
+}
+
+body.theme-day .capsule p {
+  color: var(--muted-day);
+}
+
+body.theme-day .capsule {
+  background: rgba(10, 126, 164, 0.05);
+  border-color: rgba(10, 126, 164, 0.08);
+}
+
+@media (max-width: 768px) {
+  .top-picks {
+    margin: 1.8rem 0;
+  }
+  .top-picks-list {
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .top-pick {
+    padding: 0.6rem;
+  }
+  .capsule img {
+    height: 120px;
+  }
+  .capsule-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Roadmap section */
+.roadmap {
+  margin: 2rem 0;
+}
+
+.roadmap h3 {
+  color: var(--heading-color-night);
+}
+
+body.theme-day .roadmap h3 {
+  color: var(--heading-color-day);
+}
+
+.roadmap ol {
+  color: var(--text-color);
+}
+
+.roadmap li {
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.roadmap strong {
+  color: var(--heading-color-night);
+}
+
+body.theme-day .roadmap strong {
+  color: var(--heading-color-day);
+}
+
+/* CTA section */
+.cta {
+  margin: 2rem 0;
+  padding: 2rem;
+  text-align: center;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.01),
+    rgba(255, 255, 255, 0.005)
+  );
+  border-radius: 12px;
+}
+
+body.theme-day .cta {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 126, 164, 0.04),
+    rgba(10, 126, 164, 0.02)
+  );
+}
+
+.cta p {
+  color: var(--text-color);
+  margin: 0;
+}
+
+/* Featured tutorials section */
+.featured-tutorials {
+  margin: 2rem 0;
+}
+
+.featured-tutorials h3 {
+  color: var(--heading-color-night);
+}
+
+body.theme-day .featured-tutorials h3 {
+  color: var(--heading-color-day);
+}
+
+/* Featured APOD */
+.featured-apod {
+  margin: 1.5rem 0;
+}
+
+.featured-apod h3 {
+  color: var(--heading-color-night);
+}
+
+body.theme-day .featured-apod h3 {
+  color: var(--heading-color-day);
+}
+
+/* Hero section */
+.hero {
+  padding: 3rem 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.01),
+    rgba(255, 255, 255, 0.005)
+  );
+}
+
+body.theme-day .hero {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 126, 164, 0.04),
+    rgba(10, 126, 164, 0.02)
+  );
+}
+
+.hero h2 {
+  color: var(--heading-color-night);
+}
+
+body.theme-day .hero h2 {
+  color: var(--heading-color-day);
+}
+
+.hero p {
+  color: var(--text-color);
+}
+
+.hero .lead {
+  color: var(--text-color);
+  font-size: 1.1rem;
+}
+
+body.theme-day .hero .lead {
+  color: var(--text-color);
 }

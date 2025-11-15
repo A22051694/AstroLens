@@ -1,0 +1,8 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[dev]
+  # When developing locally with Netlify CLI, this ensures functions are served
+  # from the same URL prefix (/.netlify/functions)
+  command = ""

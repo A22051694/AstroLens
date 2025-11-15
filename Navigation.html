@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AstroLens | Navigation</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>AstroLens 🌌</h1>
+      <nav>
+        <div class="nav-inner">
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="Navigation.html" class="active">Navigation</a>
+          </div>
+
+          <div class="nav-actions">
+            <!-- Day / Night theme toggle (sun left, moon right). Placed at extreme right. -->
+            <button
+              id="theme-toggle"
+              class="theme-toggle"
+              aria-pressed="false"
+              aria-label="Toggle day and night theme"
+              title="Toggle day / night"
+            >
+              <svg
+                class="icon-sun"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="12" cy="12" r="4" fill="#ffd66b"></circle>
+                <g stroke="#ffd66b" stroke-width="1.2">
+                  <path d="M12 1v2"></path>
+                  <path d="M12 21v2"></path>
+                  <path d="M4.2 4.2l1.4 1.4"></path>
+                  <path d="M18.4 18.4l1.4 1.4"></path>
+                  <path d="M1 12h2"></path>
+                  <path d="M21 12h2"></path>
+                  <path d="M4.2 19.8l1.4-1.4"></path>
+                  <path d="M18.4 5.6l1.4-1.4"></path>
+                </g>
+              </svg>
+
+              <span class="track" aria-hidden="true">
+                <span class="knob"></span>
+              </span>
+
+              <svg
+                class="icon-moon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"
+                  fill="#cbd5ff"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Navigation</h2>
+
+      <!-- Featured hero: full-width spotlight -->
+      <section class="featured" id="featured-spot">
+        <div class="featured-body">
+          <h3>Spotlight: Learn Astrophotography</h3>
+          <p class="muted">
+            Start with the beginner's guide: camera setup, lens choices and
+            first steps.
+          </p>
+          <p>
+            <a class="btn" href="astrophotography-for-beginners.html"
+              >Open Tutorial</a
+            >
+          </p>
+        </div>
+        <div class="featured-media">
+          <img
+            src="https://via.placeholder.com/900x300.png?text=AstroLens+Spotlight"
+            alt="Featured: Astrophotography"
+          />
+        </div>
+      </section>
+
+      <!-- card grid -->
+      <section class="card-grid" id="card-grid">
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-front">
+              <h3><a href="tutorials.html">Tutorials</a></h3>
+            </div>
+            <div class="card-back">
+              <p>Aggregated list of tutorials — add items manually.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-front">
+              <h3><a href="gallery.html">Gallery</a></h3>
+            </div>
+            <div class="card-back">
+              <p>Upload / download images (local-first gallery).</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-front">
+              <h3><a href="challenges.html">Challenges</a></h3>
+            </div>
+            <div class="card-back">
+              <p>Weekly/monthly capture challenges and submissions.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-front">
+              <h3><a href="tools.html">Tools &amp; Equipment</a></h3>
+            </div>
+            <div class="card-back">
+              <p>Exposure / FOV calculators and equipment lists.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- APOD moved to Home page. -->
+    </main>
+
+    <footer>
+      <p>© 2025 AstroLens • Updated Version&nbsp;&nbsp;<a href="https://a22051694.github.io/AstroLens/" target="_blank" rel="noopener">View Original (2023)</a></p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

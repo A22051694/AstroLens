@@ -9,28 +9,282 @@
     <header>
       <h1>AstroLens 🌌</h1>
       <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <div class="nav-inner">
+          <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="Navigation.html">Navigation</a>
+          </div>
+
+          <div class="nav-actions">
+            <button
+              id="theme-toggle"
+              class="theme-toggle"
+              aria-pressed="false"
+              aria-label="Toggle day and night theme"
+              title="Toggle day / night"
+            >
+              <svg
+                class="icon-sun"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="12" cy="12" r="4" fill="#ffd66b"></circle>
+                <g stroke="#ffd66b" stroke-width="1.2">
+                  <path d="M12 1v2"></path>
+                  <path d="M12 21v2"></path>
+                  <path d="M4.2 4.2l1.4 1.4"></path>
+                  <path d="M18.4 18.4l1.4 1.4"></path>
+                  <path d="M1 12h2"></path>
+                  <path d="M21 12h2"></path>
+                  <path d="M4.2 19.8l1.4-1.4"></path>
+                  <path d="M18.4 5.6l1.4-1.4"></path>
+                </g>
+              </svg>
+
+              <span class="track" aria-hidden="true">
+                <span class="knob"></span>
+              </span>
+
+              <svg
+                class="icon-moon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"
+                  fill="#cbd5ff"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
       </nav>
     </header>
 
     <main>
-      <h2>Welcome to AstroLens</h2>
-      <p>
-        Your beginner-friendly platform to learn the beautiful art of
-        astrophotography.
-      </p>
-      <ul>
-        <li>📸 Introduction to Space Imaging</li>
-        <li>📚 History of Astrophotography</li>
-        <li>🎓 Step-by-Step Tutorials</li>
-        <li>🖼️ Curated Image Gallery</li>
-      </ul>
+      <section class="hero">
+        <div class="container">
+          <h2>Welcome to AstroLens</h2>
+          <p class="lead">
+            Your beginner-friendly platform to learn the beautiful art of
+            astrophotography. Start small, learn fast, and capture the night
+            sky.
+          </p>
+          <p>
+            <a class="btn" href="Navigation.html">Start Here — Beginner Pack</a>
+            <a class="btn muted" href="tutorials.html">Explore Tutorials</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="featured-apod container" id="apod-widget">
+        <h3>NASA Image of the Day</h3>
+        <div id="apod-area">Loading APOD…</div>
+      </section>
+
+      <section class="featured-tutorials container">
+        <h3>Featured Tutorials</h3>
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-inner">
+              <div class="card-front">
+                <h4>
+                  <a href="tutorials.html#tips-tonight"
+                    >7 Astrophotography Tips You Can Try Tonight</a
+                  >
+                </h4>
+              </div>
+              <div class="card-back">
+                <p>
+                  The astrophotography tips and camera settings featured in this
+                  article apply whether you are shooting deep-sky objects with a
+                  DSLR and telescope or with a simple camera on a tripod.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-inner">
+              <div class="card-front">
+                <h4>
+                  <a href="tutorials.html#stars"
+                    >How To Take Pictures of Stars</a
+                  >
+                </h4>
+              </div>
+              <div class="card-back">
+                <p>
+                  These are the exact camera settings used to take pictures of
+                  stars with a DSLR and lens. A common entry point into
+                  astrophotography.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-inner">
+              <div class="card-front">
+                <h4>
+                  <a href="tutorials.html#polar-align"
+                    >How to Polar Align Your Telescope Mount</a
+                  >
+                </h4>
+              </div>
+              <div class="card-back">
+                <p>
+                  Polar alignment is crucial for sharp long exposures. Learn how
+                  to align a German equatorial mount to reduce star trailing.
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="top-picks container">
+        <h3>Top Picks</h3>
+        <ul>
+          <li>
+            <a
+              class="top-pick"
+              href="#"
+              title="Long-Exposure Star Trails Setup (placeholder)"
+            >
+              <span class="tp-title">Long-Exposure Star Trails Setup</span>
+              <span class="tp-desc"
+                >Camera settings, stacking options, and how to avoid
+                overexposure or noisy frames.</span
+              >
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="top-pick"
+              href="#"
+              title="Moon Photography With Budget Lenses (placeholder)"
+            >
+              <span class="tp-title">Moon Photography With Budget Lenses</span>
+              <span class="tp-desc"
+                >Practical tips for getting sharp lunar shots using entry-level
+                telephoto lenses.</span
+              >
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="top-pick"
+              href="#"
+              title="Deep-Sky Targets for Small Telescopes (placeholder)"
+            >
+              <span class="tp-title"
+                >Deep-Sky Targets for Small Telescopes</span
+              >
+              <span class="tp-desc"
+                >A shortlist of nebulae and galaxies that are easy to capture
+                without high-end equipment.</span
+              >
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="roadmap container">
+        <h3>Astrophotography Roadmap</h3>
+        <ol>
+          <li>
+            <strong>Step 1 — Learn the Basics</strong>
+            <p>
+              Understanding exposure, ISO, shutter speed; moon phases; basic
+              gear: tripod, DSLR/phone, remote shutter.
+            </p>
+          </li>
+          <li>
+            <strong>Step 2 — Start With Wide-Angle Shots</strong>
+            <p>
+              Milky Way attempts, star trails, simple constellations — no
+              telescope needed.
+            </p>
+          </li>
+          <li>
+            <strong>Step 3 — Move Into Deep-Sky</strong>
+            <p>
+              Using tracking mounts, polar alignment, long exposures and
+              stacking, processing raw images.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="history-capsules container">
+        <h3>History Capsules</h3>
+        <div class="capsule-grid">
+          <article class="capsule">
+            <img
+              src="https://via.placeholder.com/400x200.png?text=1840+Moon"
+              alt="First Photograph of the Moon"
+            />
+            <h4>First Photograph of the Moon (1840)</h4>
+            <p>
+              John William Draper captured the first detailed lunar image using
+              a daguerreotype plate.
+            </p>
+          </article>
+          <article class="capsule">
+            <img
+              src="https://via.placeholder.com/400x200.png?text=Deep-Sky+Imaging"
+              alt="Birth of Deep-Sky Imaging"
+            />
+            <h4>Birth of Deep-Sky Imaging (Late 1800s)</h4>
+            <p>
+              Long-exposure film techniques allowed astronomers to capture
+              nebulae for the first time.
+            </p>
+          </article>
+          <article class="capsule">
+            <img
+              src="https://via.placeholder.com/400x200.png?text=Hubble+1990"
+              alt="Launch of the Hubble Telescope"
+            />
+            <h4>Launch of the Hubble Telescope (1990)</h4>
+            <p>
+              Revolutionized astrophotography with clear images of distant
+              galaxies.
+            </p>
+          </article>
+          <article class="capsule">
+            <img
+              src="https://via.placeholder.com/400x200.png?text=Digital+Sensors"
+              alt="Modern Digital Sensors"
+            />
+            <h4>Modern Digital Sensors (2000s–Present)</h4>
+            <p>
+              DSLRs, CMOS sensors, and stacking software made amateur
+              astrophotography widely accessible.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="cta container">
+        <p>
+          <a class="btn" href="tutorials.html"
+            >Start your astrophotography journey — Explore Tutorials</a
+          >
+        </p>
+      </section>
     </main>
 
     <footer>
-      <p>&copy; 2025 AstroLens | Explore the Cosmos</p>
+      <p>© 2025 AstroLens • Updated Version&nbsp;&nbsp;<a href="https://a22051694.github.io/AstroLens/" target="_blank" rel="noopener">View Original (2023)</a></p>
     </footer>
+    <script src="script.js"></script>
   </body>
 </html>

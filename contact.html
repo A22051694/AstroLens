@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>AstroLens | About</title>
+    <title>AstroLens | Contact</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -12,8 +12,8 @@
         <div class="nav-inner">
           <div class="nav-links">
             <a href="index.html">Home</a>
-            <a href="about.html" class="active">About</a>
-            <a href="contact.html">Contact</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" class="active">Contact</a>
             <a href="Navigation.html">Navigation</a>
           </div>
 
@@ -66,31 +66,40 @@
     </header>
 
     <main>
-      <h2>About the Project</h2>
+      <h2>Contact Us</h2>
       <p>
-        AstroLens is built to help beginners explore the skies through the lens
-        of a camera. We simplify the complex techniques of astrophotography into
-        bite-sized, beginner-friendly tutorials.
+        Have questions or want to collaborate? Send us a message and we'll get
+        back to you.
       </p>
 
-      <h3>Goals</h3>
-      <ul>
-        <li>Demystify night sky photography</li>
-        <li>Offer visual guides for practical learning</li>
-        <li>Support aspiring photographers through the basics</li>
-      </ul>
+      <form id="contact-form" method="post" action="#">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required />
 
-      <h3>History Highlights</h3>
-      <p>
-        From the first moon photo in 1840 to the Hubble Telescope, the journey
-        of astrophotography has revolutionized our view of the universe. Explore
-        this incredible timeline through our curated lessons.
-      </p>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
     </main>
 
     <footer>
       <p>© 2025 AstroLens • Updated Version&nbsp;&nbsp;<a href="https://a22051694.github.io/AstroLens/" target="_blank" rel="noopener">View Original (2023)</a></p>
     </footer>
+
+    <script>
+      // Simple demo handler: prevent actual submission and show a friendly message
+      document
+        .getElementById("contact-form")
+        ?.addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Thanks — your message was sent (demo).");
+          this.reset();
+        });
+    </script>
     <script src="script.js"></script>
   </body>
 </html>
