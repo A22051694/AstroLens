@@ -22,7 +22,7 @@ AstroLens is a web platform designed to help beginners explore and learn the art
 ### Installation
 1. Clone the repository
 ```bash
-git clone https://github.com/A22051694/WEBSITE-PROJECT
+git clone https://github.com/A22051694/AstroLens
 ```
 2. Open `index.html` in your preferred browser
 
