@@ -1,103 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>AstroLens | About</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header>
-      <h1>AstroLens 🌌</h1>
-      <nav>
-        <div class="nav-inner">
-          <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="about.html" class="active">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="Navigation.html">Navigation</a>
-          </div>
+<head>
+  <meta charset="UTF-8">
+  <title>AstroLens | About</title>
+  <style>
+    body {
+      background-color: #0b0c10;
+      color: #c5c6c7;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header, nav, footer {
+      background-color: #1f2833;
+      text-align: center;
+      padding: 1rem;
+    }
+    nav a {
+      margin: 0 15px;
+      color: #66fcf1;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    main {
+      padding: 2rem;
+    }
+    h2 {
+      color: #66fcf1;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AstroLens 🌌</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-          <div class="nav-actions">
-            <button
-              id="theme-toggle"
-              class="theme-toggle"
-              aria-pressed="false"
-              aria-label="Toggle day and night theme"
-              title="Toggle day / night"
-            >
-              <svg
-                class="icon-sun"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <circle cx="12" cy="12" r="4" fill="#ffd66b"></circle>
-                <g stroke="#ffd66b" stroke-width="1.2">
-                  <path d="M12 1v2"></path>
-                  <path d="M12 21v2"></path>
-                  <path d="M4.2 4.2l1.4 1.4"></path>
-                  <path d="M18.4 18.4l1.4 1.4"></path>
-                  <path d="M1 12h2"></path>
-                  <path d="M21 12h2"></path>
-                  <path d="M4.2 19.8l1.4-1.4"></path>
-                  <path d="M18.4 5.6l1.4-1.4"></path>
-                </g>
-              </svg>
+  <main>
+    <h2>About the Project</h2>
+    <p>AstroLens is built to help beginners explore the skies through the lens of a camera. We simplify the complex techniques of astrophotography into bite-sized, beginner-friendly tutorials.</p>
+    
+    <h3>Goals</h3>
+    <ul>
+      <li>Demystify night sky photography</li>
+      <li>Offer visual guides for practical learning</li>
+      <li>Support aspiring photographers through the basics</li>
+    </ul>
+    
+    <h3>History Highlights</h3>
+    <p>From the first moon photo in 1840 to the Hubble Telescope, the journey of astrophotography has revolutionized our view of the universe. Explore this incredible timeline through our curated lessons.</p>
+  </main>
 
-              <span class="track" aria-hidden="true">
-                <span class="knob"></span>
-              </span>
-
-              <svg
-                class="icon-moon"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path
-                  d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"
-                  fill="#cbd5ff"
-                ></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <main>
-      <h2>About the Project</h2>
-      <p>
-        AstroLens is built to help beginners explore the skies through the lens
-        of a camera. We simplify the complex techniques of astrophotography into
-        bite-sized, beginner-friendly tutorials.
-      </p>
-
-      <h3>Goals</h3>
-      <ul>
-        <li>Demystify night sky photography</li>
-        <li>Offer visual guides for practical learning</li>
-        <li>Support aspiring photographers through the basics</li>
-      </ul>
-
-      <h3>History Highlights</h3>
-      <p>
-        From the first moon photo in 1840 to the Hubble Telescope, the journey
-        of astrophotography has revolutionized our view of the universe. Explore
-        this incredible timeline through our curated lessons.
-      </p>
-    </main>
-
-    <footer>
-      <p>
-        © 2025 AstroLens • Updated Version&nbsp;&nbsp;<a
-          href="https://a22051694.github.io/AstroLens/"
-          target="_blank"
-          rel="noopener"
-          >View Original (2023)</a
-        >
-      </p>
-    </footer>
-    <script src="script.js"></script>
-  </body>
+  <footer>
+    <p>&copy; 2025 AstroLens | Made with ❤️ under the stars</p>
+  </footer>
+</body>
 </html>
